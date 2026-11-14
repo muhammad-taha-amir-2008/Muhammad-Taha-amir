@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+    <!-- Primary Meta Tags -->
+    <title>FastBite Express – Fresh Pizza, Burgers & Fries</title>
+    <meta name="title" content="FastBite Express – Fresh Pizza, Burgers & Fries">
+    <meta name="description" content="Craving fast food? FastBite Express serves hot pizza, juicy burgers, crispy fries, and more. Order online or visit us – taste the speed!">
+    <meta name="keywords" content="fast food, pizza, burger, fries, fast food restaurant, burgers, pizza delivery, quick meals, fast food near me">
+    <meta name="author" content="FastBite Express">
+    <meta name="robots" content="index, follow">
+
+    <!-- Additional Open Graph / social (optional but nice) -->
+    <meta property="og:title" content="FastBite Express – Hot Pizza & Burgers">
+    <meta property="og:description" content="Order pizza, burgers, fries & more. Fresh, fast, delicious.">
+    <meta property="og:type" content="restaurant">
+
+    <!-- Stylesheet -->
+    <style>
+        /* RESET & GLOBAL */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background: #fdfaf5;
+            color: #2e241f;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        /* CONTAINER UTILITY */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* ----- NAVBAR ----- */
+        nav {
+            background: #ffffff;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            padding: 0.8rem 0;
+            border-bottom: 2px solid #ffe9d6;
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: #c1461b;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .logo span {
+            font-size: 2rem;
+            margin-right: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.2rem;
+            list-style: none;
+            font-weight: 600;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #2e241f;
+            font-size: 1.05rem;
+            transition: color 0.2s, border-bottom 0.2s;
+            padding-bottom: 5px;
+            border-bottom: 2px solid transparent;
+        }
+
+        .nav-links a:hover {
+            color: #c1461b;
+            border-bottom-color: #c1461b;
+        }
+
+        /* ----- HEADER ----- */
+        header {
+            background: linear-gradient(135deg, #fff1e6 0%, #fff9f2 100%);
+            padding: 3rem 0 4rem;
+            text-align: center;
+            border-bottom: 3px dashed #ffd8b5;
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            color: #2e241f;
+            letter-spacing: -1px;
+            line-height: 1.2;
+        }
+
+        .hero h1 span {
+            color: #c1461b;
+            background: #ffe1cc;
+            padding: 0 0.6rem;
+            border-radius: 30px;
+            display: inline-block;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 650px;
+            margin: 1.2rem auto 1.8rem;
+            color: #5a4a3e;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #c1461b;
+            color: white;
+            font-weight: 700;
+            padding: 0.9rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            box-shadow: 0 10px 20px rgba(193, 70, 27, 0.25);
+            transition: transform 0.15s ease, background 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #9f3613;
+            transform: scale(1.02);
+        }
+
+        /* ----- SECTION TITLES ----- */
+        .section-title {
+            font-size: 2.4rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: #2e241f;
+            text-align: center;
+            letter-spacing: -0.5px;
+        }
+
+        .section-sub {
+            text-align: center;
+            color: #7a6a5e;
+            margin-bottom: 2.8rem;
+            font-size: 1.15rem;
+        }
+
+        /* ----- MENU CARDS ----- */
+        .menu-section {
+            padding: 4rem 0 3rem;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 28px;
+            padding: 1.8rem 1.2rem 2rem;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            text-align: center;
+            border: 2px solid #fff0e2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 40px rgba(193, 70, 27, 0.12);
+            border-color: #ffc9a3;
+        }
+
+        .card-emoji {
+            font-size: 4.2rem;
+            line-height: 1;
+            margin-bottom: 0.8rem;
+            filter: drop-shadow(2px 6px 8px rgba(0,0,0,0.08));
+        }
+
+        .card h3 {
+            font-size: 1.9rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 0.4rem;
+            color: #3d2b1f;
+        }
+
+        .card-desc {
+            color: #7a6a5e;
+            font-size: 0.95rem;
+            margin-bottom: 1.2rem;
+            line-height: 1.5;
+        }
+
+        .price {
+            font-weight: 800;
+            font-size: 1.7rem;
+            color: #c1461b;
+            margin-top: auto;
+            margin-bottom: 0.6rem;
+        }
+
+        .price small {
+            font-weight: 500;
+            font-size: 1rem;
+            color: #7a6a5e;
+        }
+
+        /* extra food items (small cards) */
+        .extra-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            justify-content: center;
+            margin-top: 3rem;
+        }
+
+        .mini-card {
+            background: #fff8f0;
+            border-radius: 60px;
+            padding: 0.8rem 1.8rem;
+            font-weight: 600;
+            font-size: 1.2rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            border: 2px solid #ffe1cc;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+        }
+
+        .mini-card span {
+            font-size: 1.8rem;
+        }
+
+        /* ----- CONTACT US ----- */
+        .contact-section {
+            background: #fff4ec;
+            padding: 4rem 0;
+            margin-top: 2rem;
+            border-top: 3px solid #ffd8b5;
+            border-bottom: 3px solid #ffd8b5;
+        }
+
+        .contact-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem;
+            align-items: flex-start;
+            justify-content: center;
+        }
+
+        .contact-info {
+            flex: 1 1 280px;
+            background: white;
+            padding: 2.2rem 2rem;
+            border-radius: 28px;
+            box-shadow: 0 15px 25px rgba(0,0,0,0.03);
+            border: 2px solid #fff0e2;
+        }
+
+        .contact-info h3 {
+            font-size: 1.9rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #c1461b;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 1.3rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-item .emoji-icon {
+            font-size: 1.8rem;
+            min-width: 2.2rem;
+        }
+
+        .contact-form {
+            flex: 1 1 380px;
+            background: white;
+            padding: 2.2rem 2rem;
+            border-radius: 28px;
+            box-shadow: 0 15px 25px rgba(0,0,0,0.03);
+            border: 2px solid #fff0e2;
+        }
+
+        .contact-form h3 {
+            font-size: 1.9rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #c1461b;
+        }
+
+        .form-group {
+            margin-bottom: 1.3rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.9rem 1.2rem;
+            border: 2px solid #ffe1cc;
+            border-radius: 40px;
+            font-size: 1rem;
+            background: #fffdfa;
+            transition: border 0.2s, box-shadow 0.2s;
+            outline: none;
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: #c1461b;
+            box-shadow: 0 0 0 4px rgba(193, 70, 27, 0.1);
+        }
+
+        .form-group textarea {
+            border-radius: 24px;
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .contact-form .btn {
+            width: 100%;
+            padding: 1rem;
+            font-size: 1.15rem;
+            border-radius: 40px;
+        }
+
+        #formFeedback {
+            margin-top: 1rem;
+            font-weight: 600;
+            color: #1e7b4b;
+            text-align: center;
+            min-height: 1.8rem;
+        }
+
+        /* ----- FOOTER ----- */
+        footer {
+            background: #1e1612;
+            color: #dbcfc7;
+            padding: 2.5rem 0 2rem;
+            margin-top: 2rem;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .footer-logo {
+            font-weight: 800;
+            font-size: 1.8rem;
+            color: #ffb485;
+            letter-spacing: -0.5px;
+        }
+
+        .footer-logo span {
+            font-size: 2rem;
+        }
+
+        .footer-copy {
+            font-size: 0.95rem;
+            color: #a89b92;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1.2rem;
+            font-size: 1.4rem;
+        }
+
+        .footer-social a {
+            color: #dbcfc7;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-social a:hover {
+            color: #ffb485;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 700px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+
+            .nav-links {
+                gap: 1.5rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+                padding: 0 0.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .card h3 {
+                font-size: 1.7rem;
+            }
+
+            .mini-card {
+                font-size: 1rem;
+                padding: 0.6rem 1.2rem;
+            }
+
+            .contact-grid {
+                flex-direction: column;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 450px) {
+            .logo {
+                font-size: 1.5rem;
+            }
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            .btn {
+                padding: 0.75rem 1.8rem;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========== NAVIGATION BAR ========== -->
+    <nav>
+        <div class="container nav-container">
+            <div class="logo">
+                <span>🍔</span> FastBite
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ========== HEADER / HERO ========== -->
+    <header id="home">
+        <div class="container hero">
+            <h1>Hot. Fresh. <span>Fast.</span></h1>
+            <p>Pizza, burgers, fries & all your fast-food favourites – made with love and served in minutes.</p>
+            <a href="#menu" class="btn">🍕 View Menu</a>
+        </div>
+    </header>
+
+    <!-- ========== MAIN MENU SECTION ========== -->
+    <main>
+        <section class="menu-section" id="menu">
+            <div class="container">
+                <h2 class="section-title">🔥 Our Best Sellers</h2>
+                <p class="section-sub">Crispy, cheesy, juicy — pick your craving</p>
+
+                <!-- CARD GRID: PIZZA, BURGER, FRIES + more -->
+                <div class="card-grid">
+                    <!-- Pizza Card -->
+                    <div class="card">
+                        <div class="card-emoji">🍕</div>
+                        <h3>Pizza</h3>
+                        <p class="card-desc">Hand-tossed, 100% mozzarella, rich tomato sauce, and your favourite toppings.</p>
+                        <div class="price">$9.90 <small>– $14.90</small></div>
+                    </div>
+
+                    <!-- Burger Card -->
+                    <div class="card">
+                        <div class="card-emoji">🍔</div>
+                        <h3>Burger</h3>
+                        <p class="card-desc">Juicy beef patty, melted cheddar, fresh lettuce, tomato, and our secret sauce.</p>
+                        <div class="price">$7.50 <small>– $11.20</small></div>
+                    </div>
+
+                    <!-- Fries Card -->
+                    <div class="card">
+                        <div class="card-emoji">🍟</div>
+                        <h3>Fries</h3>
+                        <p class="card-desc">Golden, crispy, perfectly salted. Served with ketchup or our signature dip.</p>
+                        <div class="price">$3.90 <small>– $5.50</small></div>
+                    </div>
+
+                    <!-- Chicken Nuggets Card (fast food item) -->
+                    <div class="card">
+                        <div class="card-emoji">🍗</div>
+                        <h3>Chicken Nuggets</h3>
+                        <p class="card-desc">Tender white-meat chicken, crispy breading. 6 or 9 pieces with sauce.</p>
+                        <div class="price">$5.20 <small>– $7.90</small></div>
+                    </div>
+                </div>
+
+                <!-- extra fast food items as mini cards -->
+                <div class="extra-items">
+                    <div class="mini-card"><span>🌭</span> Hot Dog</div>
+                    <div class="mini-card"><span>🥤</span> Soft Drinks</div>
+                    <div class="mini-card"><span>🧀</span> Mozzarella Sticks</div>
+                    <div class="mini-card"><span>🥗</span> Side Salad</div>
+                    <div class="mini-card"><span>🍦</span> Ice Cream</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== CONTACT US SECTION ========== -->
+        <section class="contact-section" id="contact">
+            <div class="container">
+                <h2 class="section-title">📬 Contact Us</h2>
+                <p class="section-sub">Order ahead, ask a question, or just say hi!</p>
+
+                <div class="contact-grid">
+                    <!-- contact information -->
+                    <div class="contact-info">
+                        <h3>📍 Find Us</h3>
+                        <div class="contact-item">
+                            <span class="emoji-icon">🏠</span> 123 Flavor Street, Foodie Town, FT 7890
+                        </div>
+                        <div class="contact-item">
+                            <span class="emoji-icon">📞</span> (555) 123-4567
+                        </div>
+                        <div class="contact-item">
+                            <span class="emoji-icon">✉️</span> hello@fastbite.com
+                        </div>
+                        <div class="contact-item">
+                            <span class="emoji-icon">⏰</span> Mon–Sun: 10:00 AM – 11:00 PM
+                        </div>
+                    </div>
+
+                    <!-- simple contact form (static, with JS feedback) -->
+                    <div class="contact-form">
+                        <h3>✉️ Send a message</h3>
+                        <form id="contactForm">
+                            <div class="form-group">
+                                <input type="text" id="name" placeholder="Your name" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" id="email" placeholder="Email address" required>
+                            </div>
+                            <div class="form-group">
+                                <textarea id="message" placeholder="Your message..." required></textarea>
+                            </div>
+                            <button type="submit" class="btn">Send message</button>
+                            <div id="formFeedback"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ========== FOOTER ========== -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-logo">
+                <span>🍔</span> FastBite
+            </div>
+            <div class="footer-copy">
+                © 2025 FastBite Express – Fresh & Fast.
+            </div>
+            <div class="footer-social">
+                <a href="#" aria-label="Instagram">📸</a>
+                <a href="#" aria-label="Facebook">👍</a>
+                <a href="#" aria-label="Twitter">🐦</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========== SIMPLE JAVASCRIPT ========== -->
+    <script>
+        (function() {
+            // Contact form: prevent page reload and show a friendly feedback message
+            const form = document.getElementById('contactForm');
+            const feedback = document.getElementById('formFeedback');
+
+            if (form) {
+                form.addEventListener('submit', function(event) {
+                    event.preventDefault();   // prevent actual form submission (static site)
+
+                    // (optional) get values but we don't send anywhere – just demo)
+                    const name = document.getElementById('name')?.value.trim() || 'friend';
+                    
+                    // show success message
+                    feedback.textContent = `Thanks ${name}! We'll get back to you soon. 🍕`;
+                    feedback.style.color = '#1e7b4b';
+
+                    // clear form fields (optional)
+                    form.reset();
+
+                    // reset message after 5 seconds
+                    setTimeout(() => {
+                        feedback.textContent = '';
+                    }, 5000);
+                });
+            }
+
+            // smooth scroll for anchor links (optional, but CSS already has scroll-behavior)
+            // Extra: highlight the active nav link? (not necessary, but subtle)
+            // This is fine – pure static.
+
+            // small delight: log a welcome
+            console.log('🍟 FastBite – welcome! Static site loaded.');
+        })();
+    </script>
+
+    <!-- small note: the contact form is static; submission just shows a message -->
+</body>
+</html>
